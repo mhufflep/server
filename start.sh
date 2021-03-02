@@ -1,4 +1,3 @@
-service nginx start
 service mysql start
 service php7.3-fpm start
 
@@ -9,4 +8,4 @@ echo "GRANT ALL ON wordpress.* TO 'root'@'localhost' IDENTIFIED BY ''" | mysql -
 echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password
 echo "FLUSH PRIVILEGES" | mysql -u root --skip-password
 
-bash	
+nginx -g 'daemon off;'

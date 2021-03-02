@@ -78,6 +78,7 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
+define( 'WP_DEFAULT_THEME', 'twentytwenty' );
 
 /* That's all, stop editing! Happy publishing. */
 
