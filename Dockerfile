@@ -1,4 +1,5 @@
 FROM debian:buster
+LABEL maintainer="mhufflep@student.21-school.ru"
 
 RUN apt-get -y update && apt-get -y upgrade
 
@@ -30,11 +31,13 @@ RUN chmod -R 755 /var/www/*
 #-- SSL --
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 				-subj "/C=ru/ST=Kazan/L=Kazan/O=no/OU=no/CN=mhuf" \
-				-keyout /etc/ssl/private/mhuf.key -out /etc/ssl/certs/mhuf.crt
+				-keyout /etc/ssl/private/mhufflep.key -out /etc/ssl/certs/mhufflep.crt
 
+
+COPY srcs/create.sql ./
 
 #-- nginx conf --
-COPY srcs/default /etc/nginx/sites-available/
+COPY srcs/default /etc/nginx/sites-available/default
 RUN rm -rf /etc/nginx/sites-enabled/default
 RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/	
 
